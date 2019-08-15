@@ -159,10 +159,14 @@ contains(names, 'Colt', function(result){
 */
 function uniq (arr, cb) {
   for (let i = 0; i < arr.length; i++) {
-    for (let j = i+1; j < arr.length; j++) {
-      if (arr[i] === arr[j]) {
-        arr.splice(j, 1)}  
-
+    for (let j = 0;/* 
+      let j = 0 here, but it won't remove itself 
+    because one line down, I have a second condition in the if-statement that must pass, 
+    that condition being that i and j must be inequal to each other in order to allow them to be removed
+    */ j < arr.length; j++) {
+      if (arr[i] === arr[j] && i !== j) {
+        arr.splice(j, 1)
+      } 
     }
   } return cb (arr) //RETURN it HERE instead of returning it within the same bracket as the splice, because return isn't something you want it to do every time it runs through the j or even i for-loop--its something you want to do as a result of the whole function. So, put it in the function's brackets, as you see here. 
 }
