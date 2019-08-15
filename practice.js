@@ -28,9 +28,19 @@
 */
 
 // Code Here 
-function first(anArray, aCallBack){
-  aCallBack(anArray[0]);
-}; 
+
+function first (arr, cb) {
+  cb (arr[0])
+};
+
+
+
+
+
+
+// function first(anArray, aCallBack){
+//   aCallBack(anArray[0]);
+// }; 
 
 // Do not edit the code below.
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
@@ -51,9 +61,18 @@ first(names, function(firstName){
 */
 
 //Code Here
-function last (x, y){
-  y (x[x.length-1])
-};
+
+function last (arr, cb) {
+  cb (arr[arr.length-1]);
+}
+
+
+
+
+
+// function last (x, y){
+//   y (x[x.length-1])
+// };
 
 // Do not edit the code below.
 last(names, function(lastName){
@@ -72,9 +91,16 @@ last(names, function(lastName){
 */
 
 //Code Here
-function multiply (x, y, zCB){
-  zCB (x*y)
+
+function multiply (num1, num2, cb) {
+  cb (num1 * num2);
 }
+
+
+
+// function multiply (x, y, zCB){
+//   zCB (x*y)
+// }
 // Do not edit the code below.
 multiply(4, 3, function(answer){
   console.log('The answer is ' + answer); //should console.log 12
@@ -93,11 +119,25 @@ multiply(4, 3, function(answer){
 */
 
 //Code Here 
+let contains = function (arr, name, cb) {
+  for (let i = 0; i < arr.length; i++){
+    if (name === arr[i]) {
+      cb (true)} else {
+        cb (false)
+      }
+    }
+  }
+
+
+
+
 // function contains (array, name, zCB){
 //   if (array.includes(name)){zCB (true)
 //   } else {zCB (false)}
 // }
-function contains (array, name, zCB) {for (let i=0; i<array.length; i++){if (array[i] === name){ zCB (true)}else {zCB (false)}}}
+
+
+// function contains (array, name, zCB) {for (let i=0; i<array.length; i++){if (array[i] === name){ zCB (true)}else {zCB (false)}}}
 
 // Do not edit the code below.
 contains(names, 'Colt', function(result){
@@ -117,17 +157,34 @@ contains(names, 'Colt', function(result){
   Write a function called uniq that takes in an array and a callback function.
   Remove any duplicate values from the array, and invoke the callback with the modified array as an argument.
 */
+function uniq (arr, cb) {
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = i+1; j < arr.length; j++) {
+      if (arr[i] === arr[j]) {
+        arr.splice(j, 1)}  
 
-var uniq = function (arr, cb) {
-  for (let i=0; i<arr.length; i++) {
-    for(let j=i+1;j<arr.length; j++){ 
-      if (arr[i]===arr[j]){
-        arr.splice(j,1)
-      } 
     }
-  }
-  cb(arr)
+  } return cb (arr) //RETURN it HERE instead of returning it within the same bracket as the splice, because return isn't something you want it to do every time it runs through the j or even i for-loop--its something you want to do as a result of the whole function. So, put it in the function's brackets, as you see here. 
 }
+
+
+
+
+
+
+
+
+
+// var uniq = function (arr, cb) {
+//   for (let i=0; i<arr.length; i++) {
+//     for(let j=i+1;j<arr.length; j++){ 
+//       if (arr[i]===arr[j]){
+//         arr.splice(j,1)
+//       } 
+//     }
+//   }
+//   cb(arr)
+// }
 
 // Do not edit the code below.
 uniq(names, function(uniqArr){
@@ -145,12 +202,24 @@ uniq(names, function(uniqArr){
 */
 
 //Code Here 
-function each (namesArr, cb){
-  for(let i = 0; i<namesArr.length; i++){
-    cb(namesArr[i], i)
+function each (arr, cb) {
+  for (let i = 0; i<arr.length; i++) {
+    cb (arr[i], i)
   }
+};
 
-}
+
+
+
+
+
+
+// function each (namesArr, cb){
+//   for(let i = 0; i<namesArr.length; i++){
+//     cb(namesArr[i], i)
+//   }
+
+// }
 // Do not edit the code below.
 each(names, function(item, indice){
   console.log('The item in the ' + indice + ' position is ' + item)
@@ -167,15 +236,28 @@ each(names, function(item, indice){
 */
 
 // Code here
-function getUserById (users, id, cb){
-  for (let i = 0; i < users.length; i++){
-    // for (let j=0; j<users[i].length; j++){
-      if (users[i].id===id){
-        cb (users[i])
-      }
-    // }
-  } 
+let getUserById = function (arr, id, cb) {
+  for (let i = 0; i<arr.length; i++) {
+    if (arr[i].id === id){
+      cb (arr[i])
+    }
+  }
 }
+
+
+
+
+
+
+// function getUserById (users, id, cb){
+//   for (let i = 0; i < users.length; i++){
+//     // for (let j=0; j<users[i].length; j++){
+//       if (users[i].id===id){
+//         cb (users[i])
+//       }
+//     // }
+//   } 
+// }
 
 // Do not edit the code below.
 var users = [
